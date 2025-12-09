@@ -53,7 +53,7 @@ const Add = () => {
         { withCredentials: true }
       );
 
-      console.log(result.data);
+      // console.log(result.data);
 
       if (result.data) {
         setName("");
@@ -69,6 +69,7 @@ const Add = () => {
         SetSizes([]);
       }
 
+      console.log(result.data)
       toast.success("Product Added Successfully");
       navigate("/lists")
     } catch (error) {
