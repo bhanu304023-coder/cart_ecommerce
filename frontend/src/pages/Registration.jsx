@@ -55,7 +55,7 @@ const Registration = () => {
 
       toast.success("Registration Successful!");
       await getCurrentUser();
-      navigate("/");
+      navigate("/home");
 
     } catch (error) {
       const message = error?.response?.data?.message || "Google signup failed";
@@ -69,7 +69,7 @@ const Registration = () => {
 
       {/* Header */}
       <div 
-        onClick={() => navigate("/")} 
+        onClick={() => navigate("/signup")} 
         className="w-full h-20 flex items-center px-8 gap-3 cursor-pointer"
       >
         <img className="w-[45px]" src={Logo} alt="Logo" />

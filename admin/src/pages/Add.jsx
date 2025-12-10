@@ -21,11 +21,13 @@ const Add = () => {
   const [subCategory, SetSubCategory] = useState("TopWear");
   const [bestSeller, SetBestSeller] = useState(false);
   const [Sizes, SetSizes] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   let {server_url} =  useContext(authDataContext);
 
   const handleProductSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       let formData = new FormData();
       formData.append("name", name);
@@ -34,19 +36,12 @@ const Add = () => {
       formData.append("category", category);
       formData.append("subCategory", subCategory);
       formData.append("bestSeller", bestSeller);
-      formData.append("sizes", JSON.stringify(Sizes)); // ✅ serialize array
+      formData.append("sizes", JSON.stringify(Sizes)); 
       formData.append("image1", image1);
       formData.append("image2", image2);
       formData.append("image3", image3);
       formData.append("image4", image4);
 
-      // ✅ Debug: Log FormData contents
-      // console.log("FormData Contents:");
-      // for (let pair of formData.entries()) {
-        // console.log(pair[0], pair[1]);
-      // }
-
-      // console.log("FormData Contents:",formData);
       let result = await axios.post(
         `${server_url}/api/product/addProduct`,
         formData,
@@ -75,6 +70,8 @@ const Add = () => {
     } catch (error) {
       console.log(error);
       toast.error(error.message);
+    } finally {
+      setLoading(false); 
     }
   };
 
@@ -244,8 +241,13 @@ const Add = () => {
           </div>
 
           {/* Submit Button */}
-          <button type="submit" className="mt-6 w-[200px] py-2.5 bg-[#46d1f7] hover:bg-[#34b6d9] text-black text-lg font-semibold rounded-lg transition">
-            Submit
+         <button
+            type="submit"
+            disabled={loading} // disable while loading
+            className={`mt-6 w-[200px] py-2.5 text-black text-lg font-semibold rounded-lg transition
+              ${loading ? "bg-gray-600 cursor-not-allowed" : "bg-[#46d1f7] hover:bg-[#34b6d9]"}`}
+          >
+            {loading ? "Submitting..." : "Submit"} {/* show loader text */}
           </button>
         </form>
         {/* FORM END */}

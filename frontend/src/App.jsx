@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Routes ,Route } from 'react-router-dom'
+import { Routes ,Route, useLocation, Navigate } from 'react-router-dom'
 import Registration from './pages/Registration'
 import Login from './pages/Login'
 import Home from './pages/Home'
@@ -7,19 +7,49 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Nav from './components/Nav'
 import { userDataContext } from './context/UserContext'
+import About from './pages/About'
+import Collections from './pages/Collections'
+import Contact from './pages/Contact'
+import Product from './pages/Product'
 
 const App = () => {
 
   let {userData}  =  useContext(userDataContext);
-  console.log(userData)
+  let location  =  useLocation();
+  console.log(location)
 
   return (
     <>
     {userData && <Nav/>}
       <Routes>
-        <Route path ="/" element={<Home />}/>
-        <Route path ="/signup" element={<Registration />}/>
-        <Route path ="/login" element={<Login />}/>
+
+        <Route path ="/login" element = {
+          userData ? (<Navigate to={ location.state?.from || "/home" }/>) : (<Login />)
+        }/>
+
+        <Route path ="/signup" element= {
+          userData ? (<Navigate to={ location.state?.from || "/home" }/>) : (<Registration />)
+        }/>
+
+        <Route path ="/home" element={
+          userData ? <Home /> : <Navigate to="/login" state={{from : location.pathname}}/>
+        }/>
+        
+
+        {/* <Route path ="/" element={<Home />}/> */}
+
+        <Route path ="/about" element={
+          userData ? <About /> : <Navigate to="/login" state={{from : location.pathname}}/>
+        } />
+        <Route path ="/collections" element={
+          userData ? <Collections /> : <Navigate to="/login" state={{from : location.pathname}}/>
+        } />
+        <Route path ="/contact" element={
+          userData ? <Contact /> : <Navigate to="/login" state={{from : location.pathname}}/>
+        } />
+        <Route path ="/product" element={
+          userData ? <Product /> : <Navigate to="/login" state={{from : location.pathname}}/>
+        } />
       </Routes> 
 
 

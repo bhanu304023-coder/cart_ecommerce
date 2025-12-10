@@ -30,7 +30,7 @@ const Login = () => {
             console.log(result.data)
             toast.success("Logged in successfully!");
             await getCurrentUser();
-            navigate("/")
+            navigate("/home")
         } catch (error) {
             console.log(error)
             toast.error(error.response.data.message);
@@ -54,7 +54,7 @@ const Login = () => {
 
         toast.success("Login Successful!");
         await getCurrentUser();
-        navigate("/");
+        navigate("/home");
 
       } catch (error) {
         const message = error?.response?.data?.message || "Google signin failed";
@@ -66,7 +66,7 @@ const Login = () => {
       <div className="w-screen h-screen bg-gradient-to-b from-[#0a0a0a] to-[#0c2025] flex flex-col items-center text-white">
   
         {/* Header */}
-        <div onClick={() => navigate("/")} className="w-full h-20 flex items-center px-8 gap-3 cursor-pointer">
+        <div onClick={() => navigate("/login")} className="w-full h-20 flex items-center px-8 gap-3 cursor-pointer">
           <img className="w-[45px]" src={Logo} alt="Logo" />
           <h1 className="text-2xl font-semibold tracking-wide">Cart</h1>
         </div>

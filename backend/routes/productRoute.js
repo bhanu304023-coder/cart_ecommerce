@@ -1,6 +1,7 @@
 import express from "express";
-import { addProduct } from "../controllers/productController.js";
+import { addProduct, productList, removeProduct } from "../controllers/productController.js";
 import upload from "../middleware/multer.js";
+import adminAuth from "../middleware/adminAuth.js";
 
 const productRoutes =  express.Router();
 
@@ -15,5 +16,7 @@ productRoutes.post(
   addProduct
 );
 
+productRoutes.get("/product_list",productList);
+productRoutes.post("/delete_product",adminAuth,removeProduct);
 
 export default productRoutes;

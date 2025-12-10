@@ -38,7 +38,7 @@ const Login = () => {
       localStorage.setItem("admin_token", res.data.token);
       
       setTimeout(() => {
-        navigate("/");
+        navigate("/lists");
         window.location.reload()
       }, 800);
 
