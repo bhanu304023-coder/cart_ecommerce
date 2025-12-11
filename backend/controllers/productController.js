@@ -45,6 +45,7 @@ export const addProduct  = async(req,res) => {
 export const productList = async(req,res) => {
     try {
         const product  =  await Product.find({});
+        console.log(product)
         return res.status(201).json(product);
     } catch (error) {
         return res.status(500).json({

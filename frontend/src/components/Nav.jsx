@@ -11,6 +11,7 @@ import { userDataContext } from "../context/UserContext";
 import { authDataContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { shopDataContext } from "../context/ShopContext";
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const Nav = () => {
   const { getCurrentUser, userData } = useContext(userDataContext);
   const { server_url } = useContext(authDataContext);
 
-  const [showSearch, setShowSearch] = useState(false);
+  const {showSearch, setShowSearch,search,setSearch} = useContext(shopDataContext);
   const [showProfile, setShowProfile] = useState(false);
 
   // Active states
@@ -28,7 +29,7 @@ const Nav = () => {
 
   const desktopMenu = ["Home", "Collections", "About", "Contact"];
 
-  // 🔥 Auto-set active tab based on current URL
+  // Auto-set active tab based on current URL
   useEffect(() => {
     let path = location.pathname.replace("/", ""); // ex: "home"
 
@@ -93,7 +94,7 @@ const Nav = () => {
         {/* Search Icon */}
         {!showSearch ? (
           <IoSearchCircleOutline
-            onClick={() => setShowSearch(!showSearch)}
+            onClick={() => {setShowSearch(!showSearch);navigate("/collections")}}
             className="cursor-pointer hover:scale-110 transition duration-200 text-4xl"
           />
         ) : (
