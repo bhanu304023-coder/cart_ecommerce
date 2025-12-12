@@ -5,11 +5,14 @@ import Hero from '../components/Hero'
 import LatestCollection from '../components/LatestCollection'
 import BestSeller from '../components/BestSeller'
 import Product from './Product'
+import OurPolicy from '../components/OurPolicy'
+import NewLetterBox from '../components/NewLetterBox'
+import Footer from '../components/Footer'
 
 const Home = () => {
 
   const heroData = [
-    { text1: "30% OFF Limited Offer", text2: "Style that!" },
+    { text1: "20% OFF Limited Offer", text2: "Style that!" },
     { text1: "Discover the Best of Bold Fashion", text2: "Limited Time Only!" },
     { text1: "Explore Our Best Collection", text2: "Shop Now!" },
     { text1: "Choose Your Perfect Fashion Fit", text2: "Now on Sale!" }
@@ -32,12 +35,17 @@ const Home = () => {
       {/* HERO SECTION */}
       <div className="relative w-full h-[80vh] mt-[75px] flex items-center justify-center">
         <Background heroCount={heroCount} />
-        <Hero heroData={heroData[heroCount]} />
+        <Hero 
+          heroData={heroData[heroCount]} 
+          heroCount={heroCount}
+          setHeroCount={setHeroCount}
+        />
       </div>
 
-      {/* PRODUCT SECTIONS */}
-      <Product/>
-
+      <Product />
+      <OurPolicy />
+      <NewLetterBox />
+      <Footer />
     </div>
   )
 }

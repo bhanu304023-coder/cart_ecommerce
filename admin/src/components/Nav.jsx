@@ -7,7 +7,7 @@ const Nav = () => {
     const navigate = useNavigate();
     return (
         <div className="w-full h-[75px] bg-white fixed top-0 shadow-md z-10 flex items-center justify-between px-10">
-            <div onClick={() => navigate("/")} className="flex items-center gap-3 cursor-pointer select-none">
+            <div onClick={() => navigate("/lists")} className="flex items-center gap-3 cursor-pointer select-none">
                 <img className="w-[50px]" src={Logo} alt="Logo" />
                 <h1 className="text-2xl font-bold text-gray-900 tracking-wide">Cart</h1>
             </div>

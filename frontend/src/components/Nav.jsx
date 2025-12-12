@@ -139,6 +139,8 @@ const Nav = () => {
               type="text"
               placeholder="Search products, categories, brands..."
               className="w-full h-16 pl-20 pr-6 rounded-full bg-gray-100 text-gray-900 text-xl shadow-md outline-none"
+              onChange={(e) => {setSearch(e.target.value)}}
+              value={search}
             />
           </div>
         </div>
@@ -185,19 +187,13 @@ const Nav = () => {
           { name: "Contact", icon: <IoIosContact className="w-[25px] h-[30px]" /> },
           { name: "Cart", icon: <IoMdCart className="w-[25px] h-[30px]" /> },
         ].map((item) => (
-          <button
-            key={item.name}
-            onClick={() => {
-              setActiveMobile(item.name);
-              navigate(item.name === "Home" ? "/home" : `/${item.name.toLowerCase()}`);
-            }}
-            className={`flex flex-col items-center justify-center gap-[2px] text-white transition-all duration-200 
-              ${activeMobile === item.name ? "text-[#00eaff] scale-110" : ""}
-            `}
-          >
+
+          <button key={item.name} onClick={() => { setActiveMobile(item.name); navigate(item.name === "Home" ? "/home" : `/${item.name.toLowerCase()}`);}}
+             className={`flex flex-col items-center justify-center gap-[2px] text-white transition-all duration-200 ${activeMobile === item.name ? "text-[#00eaff] scale-110" : ""}`}>
             {item.icon}
             {item.name}
           </button>
+          
         ))}
       </div>
     </div>

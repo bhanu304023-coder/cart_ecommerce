@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { shopDataContext } from "../context/ShopContext";
 
 const Collections = () => {
-  const { products } = useContext(shopDataContext);
+  const { products,search,showSearch } = useContext(shopDataContext);
   const {currency}  =  useContext(shopDataContext);
   const [showFilter, setShowFilter] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState(products || []);
@@ -14,7 +14,7 @@ const Collections = () => {
 
   useEffect(() => {
     applyFilter();
-  }, [selectedCategories, selectedSubCategories, sortType, products]);
+  }, [selectedCategories, selectedSubCategories, sortType, products,search,showSearch]);
 
   
   const handleCategoryChange = (category) => {
@@ -46,6 +46,11 @@ const Collections = () => {
 
   const applyFilter = () => {
     let updated = [...products];
+
+    if(showSearch && search){
+      updated  =  updated.filter(item => item.name.toLowerCase().includes(search.toLowerCase()))
+    }
+
     if (selectedCategories.length > 0) {
       updated = updated.filter((p) => selectedCategories.includes(p.category));
     }

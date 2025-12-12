@@ -11,6 +11,7 @@ import About from './pages/About'
 import Collections from './pages/Collections'
 import Contact from './pages/Contact'
 import Product from './pages/Product'
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
 
@@ -20,6 +21,8 @@ const App = () => {
 
   return (
     <>
+     <ScrollToTop />
+     
     {userData && <Nav/>}
       <Routes>
 
