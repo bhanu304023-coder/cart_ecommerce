@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { shopDataContext } from "../context/ShopContext";
+import { useNavigate } from "react-router-dom";
 
 const Collections = () => {
   const { products,search,showSearch } = useContext(shopDataContext);
@@ -9,7 +10,7 @@ const Collections = () => {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedSubCategories, setSelectedSubCategories] = useState([]);
   const [sortType, setSortType] = useState("relevance");
-
+  const navigate  =  useNavigate();
 
 
   useEffect(() => {
@@ -144,10 +145,11 @@ const Collections = () => {
           All Collections
         </h1>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6" >
           {filteredProducts.length > 0 ? (
             filteredProducts.map((p, i) => (
               <div
+                onClick={() => navigate(`/product_detail/${p._id}`)}
                 key={i}
                 className="bg-[#0A1A22] border border-[#17333f] rounded-xl overflow-hidden shadow-lg hover:scale-[1.02] transition cursor-pointer"
               >

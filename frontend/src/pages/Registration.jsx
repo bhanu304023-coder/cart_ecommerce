@@ -31,8 +31,9 @@ const Registration = () => {
 
       console.log(result.data);
       toast.success("Registration Successful!");
-      await getCurrentUser();
       navigate("/login");
+      await getCurrentUser();
+     
     } catch (error) {
       toast.error(error.response.data.message);
     }
@@ -54,8 +55,9 @@ const Registration = () => {
       );
 
       toast.success("Registration Successful!");
-      await getCurrentUser();
       navigate("/home");
+      await getCurrentUser();
+      
 
     } catch (error) {
       const message = error?.response?.data?.message || "Google signup failed";

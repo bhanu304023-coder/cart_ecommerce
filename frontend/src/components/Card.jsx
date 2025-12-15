@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
 import { shopDataContext } from "../context/ShopContext";
+import { useNavigate } from "react-router-dom";
 
 const Card = ({ name ,img, id, price }) => {
 
-    let {currency} =  useContext(shopDataContext);
+  let {currency} =  useContext(shopDataContext);
+  let  navigate  =  useNavigate();
 
   return (
-    <div className="
+    <div onClick={() => navigate(`/product_detail/${id}`)} className="
       w-[300px] h-[250px] 
       bg-[#ffffff0a] backdrop-blur-md
       rounded-2xl overflow-hidden 

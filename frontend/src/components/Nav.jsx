@@ -20,7 +20,7 @@ const Nav = () => {
   const { getCurrentUser, userData } = useContext(userDataContext);
   const { server_url } = useContext(authDataContext);
 
-  const {showSearch, setShowSearch,search,setSearch} = useContext(shopDataContext);
+  const {showSearch, setShowSearch,search,setSearch,getCartCount} = useContext(shopDataContext);
   const [showProfile, setShowProfile] = useState(false);
 
   // Active states
@@ -122,10 +122,10 @@ const Nav = () => {
         )}
 
         {/* Cart Icon */}
-        <div className="relative hidden md:flex">
+        <div className="relative hidden md:flex" onClick={() => navigate("/cart")}>
           <HiOutlineShoppingCart className="cursor-pointer hover:scale-110 transition duration-200" />
           <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[12px] px-1.5 py-[2px] rounded-full font-semibold">
-            3
+            {getCartCount()}
           </span>
         </div>
       </div>
@@ -180,21 +180,48 @@ const Nav = () => {
       )}
 
       {/* Mobile Bottom Navigation */}
-      <div className="w-[100vw] h-[80px] flex items-center justify-between px-[20px] fixed bottom-0 left-0 bg-[#191818] md:hidden">
-        {[
-          { name: "Home", icon: <AiFillHome className="w-[25px] h-[30px]" /> },
-          { name: "Collections", icon: <HiCollection className="w-[25px] h-[30px]" /> },
-          { name: "Contact", icon: <IoIosContact className="w-[25px] h-[30px]" /> },
-          { name: "Cart", icon: <IoMdCart className="w-[25px] h-[30px]" /> },
-        ].map((item) => (
+      <div className="w-full h-[80px] fixed bottom-0 left-0 bg-[#191818] flex items-center justify-between px-6 md:hidden z-50">
 
-          <button key={item.name} onClick={() => { setActiveMobile(item.name); navigate(item.name === "Home" ? "/home" : `/${item.name.toLowerCase()}`);}}
-             className={`flex flex-col items-center justify-center gap-[2px] text-white transition-all duration-200 ${activeMobile === item.name ? "text-[#00eaff] scale-110" : ""}`}>
-            {item.icon}
-            {item.name}
-          </button>
-          
-        ))}
+        {/* Home */}
+        <button
+          onClick={() => navigate("/home")}
+          className="flex flex-col items-center justify-center gap-1 text-white"
+        >
+          <AiFillHome className="w-[26px] h-[26px]" />
+          <span className="text-[12px]">Home</span>
+        </button>
+
+        {/* Collections */}
+        <button
+          onClick={() => navigate("/collections")}
+          className="flex flex-col items-center justify-center gap-1 text-white"
+        >
+          <HiCollection className="w-[26px] h-[26px]" />
+          <span className="text-[12px]">Collections</span>
+        </button>
+
+        {/* Contact */}
+        <button
+          onClick={() => navigate("/contact")}
+          className="flex flex-col items-center justify-center gap-1 text-white"
+        >
+          <IoIosContact className="w-[26px] h-[26px]" />
+          <span className="text-[12px]">Contact</span>
+        </button>
+
+        {/* Cart */}
+        <button
+          onClick={() => navigate("/cart")}
+          className="relative flex flex-col items-center justify-center gap-1 text-white"
+        >
+          <IoMdCart className="w-[26px] h-[26px]" />
+
+          {/* Cart Count Badge */}
+          <span className="absolute top-0 right-1 bg-red-500 text-white text-[10px] px-1.5 py-[1px] rounded-full font-bold">
+            {getCartCount()}
+          </span>
+          <span className="text-[12px]">Cart</span>
+        </button>
       </div>
     </div>
   );

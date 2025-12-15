@@ -29,8 +29,9 @@ const Login = () => {
             
             console.log(result.data)
             toast.success("Logged in successfully!");
-            await getCurrentUser();
             navigate("/home")
+            await getCurrentUser();
+            
         } catch (error) {
             console.log(error)
             toast.error(error.response.data.message);
@@ -53,8 +54,9 @@ const Login = () => {
         );
 
         toast.success("Login Successful!");
-        await getCurrentUser();
         navigate("/home");
+        await getCurrentUser();
+        
 
       } catch (error) {
         const message = error?.response?.data?.message || "Google signin failed";

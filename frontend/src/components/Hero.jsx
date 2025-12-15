@@ -3,7 +3,7 @@ import { FaCircle } from "react-icons/fa";
 
 const Hero = ({ heroData, heroCount, setHeroCount }) => {
   return (
-    <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center px-10 md:px-20 z-10">
+    <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center px-10 md:px-20 z-2">
 
       {/* TEXT SECTION */}
       <div className="text-white">

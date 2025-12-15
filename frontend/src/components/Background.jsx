@@ -11,7 +11,7 @@ export default function Background({ heroCount }) {
     <img
       src={images[heroCount]}
       alt="background"
-      className="w-full h-full object-cover absolute top-0 left-0 z-0 transition-all duration-700"
+      className="w-full h-full object-cover absolute top-2 left-0 z-0 transition-all duration-700"
     />
   );
 }

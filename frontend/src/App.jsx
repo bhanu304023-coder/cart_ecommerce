@@ -12,6 +12,9 @@ import Collections from './pages/Collections'
 import Contact from './pages/Contact'
 import Product from './pages/Product'
 import ScrollToTop from "./components/ScrollToTop";
+import ProductDetail from './pages/ProductDetail'
+import Cart from './pages/Cart'
+import PlaceOrder from './pages/PlaceOrder'
 
 const App = () => {
 
@@ -52,6 +55,18 @@ const App = () => {
         } />
         <Route path ="/product" element={
           userData ? <Product /> : <Navigate to="/login" state={{from : location.pathname}}/>
+        } />
+
+        <Route path ="/product_detail/:productId" element={
+          userData ? <ProductDetail /> : <Navigate to="/login" state={{from : location.pathname}}/>
+        } />
+
+        <Route path ="/cart" element={
+          userData ? <Cart /> : <Navigate to="/login" state={{from : location.pathname}}/>
+        } />
+        
+        <Route path ="/place_order" element={
+          userData ? <PlaceOrder /> : <Navigate to="/login" state={{from : location.pathname}}/>
         } />
       </Routes> 
 
