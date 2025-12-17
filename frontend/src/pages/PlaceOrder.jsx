@@ -3,6 +3,8 @@ import { shopDataContext } from "../context/ShopContext";
 import { authDataContext } from "../context/AuthContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+
 
 const PlaceOrder = () => {
 
@@ -62,13 +64,15 @@ const PlaceOrder = () => {
                 case "cod":
                     const result =  await axios.post(`${server_url}/api/order/place_order`,orderData,{withCredentials:true});
                     console.log(result.data);
-                    
+                    toast.success("Order Placed Succesfully.");
                     if(result.data){
                         setCartItem({});
                         navigate("/orders");
                     }else{
                         console.log(result.data.message)
                     }
+
+                    
                     break;
                 break;
                 case "razorpay":
