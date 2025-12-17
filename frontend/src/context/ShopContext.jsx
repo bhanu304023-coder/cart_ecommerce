@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { authDataContext } from "./AuthContext";
 import { userDataContext } from "./UserContext";
+import { toast } from "react-toastify";
 
 export const shopDataContext = createContext();
 
@@ -62,6 +63,7 @@ const ShopContext = ({ children }) => {
           }
         }
         // console.log(cartData)
+        toast.success("Added to Cart.");
       } catch (error) {
         console.log("Error To Add to Cart!!!!")
     }

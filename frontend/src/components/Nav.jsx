@@ -162,7 +162,7 @@ const Nav = () => {
               </li>
             )}
 
-            <li className="px-5 py-3 text-gray-700 hover:bg-gray-100 cursor-pointer">Orders</li>
+            <li onClick={() => navigate("/orders")} className="px-5 py-3 text-gray-700 hover:bg-gray-100 cursor-pointer">Orders</li>
             <li className="px-5 py-3 text-gray-700 hover:bg-gray-100 cursor-pointer">About</li>
 
             {userData && <div className="w-full h-[1px] bg-gray-200 my-1"></div>}

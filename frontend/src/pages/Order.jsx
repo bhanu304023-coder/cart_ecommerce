@@ -74,7 +74,7 @@ const Order = () => {
             {/* Item */}
             <div className="order-item">
               <img
-                src={item.image}
+                src={item.image1}
                 alt={item.name}
                 className="item-image"
               />
