@@ -172,41 +172,19 @@ const Order = () => {
                     <div key={step} className="flex flex-col items-start">
 
                       <div className="flex items-center gap-4">
-                        <div
-                          className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-semibold
-                            ${isDone ? "bg-green-500 text-white" : "bg-gray-600 text-gray-300"}
-                          `}
-                        >
+                        <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-semibold ${isDone ? "bg-green-500 text-white" : "bg-gray-600 text-gray-300"} `} >
                           {isDone ? "✓" : idx + 1}
                         </div>
 
-                        <span
-                          className={`text-sm ${
-                            isDone ? "text-green-400" : "text-gray-400"
-                          }`}
-                        >
+                        <span className={`text-sm ${isDone ? "text-green-400" : "text-gray-400" }`} >
                           {step}
                         </span>
                       </div>
 
                       {idx !== statusSteps.length - 1 && (
                         <div className="ml-[14px] my-2 flex flex-col items-center">
-                          <div
-                            className={`w-[2px] h-6 ${
-                              idx < currentIndex
-                                ? "bg-green-500"
-                                : "bg-gray-600"
-                            }`}
-                          />
-                          <div
-                            className={`w-0 h-0 border-l-4 border-r-4 border-t-6
-                              ${
-                                idx < currentIndex
-                                  ? "border-t-green-500"
-                                  : "border-t-gray-600"
-                              }
-                              border-l-transparent border-r-transparent`}
-                          />
+                          <div className={`w-[2px] h-6 ${idx < currentIndex ? "bg-green-500" : "bg-gray-600" }`}/>
+                          <div className={`w-0 h-0 border-l-4 border-r-4 border-t-6 ${ idx < currentIndex ? "border-t-green-500" : "border-t-gray-600" } border-l-transparent border-r-transparent`}/>
                         </div>
                       )}
                     </div>
