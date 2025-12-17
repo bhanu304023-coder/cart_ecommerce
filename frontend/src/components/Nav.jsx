@@ -15,7 +15,7 @@ import { shopDataContext } from "../context/ShopContext";
 
 const Nav = () => {
   const navigate = useNavigate();
-  const location = useLocation(); // For URL → active tab sync
+  const location = useLocation(); 
 
   const { getCurrentUser, userData } = useContext(userDataContext);
   const { server_url } = useContext(authDataContext);

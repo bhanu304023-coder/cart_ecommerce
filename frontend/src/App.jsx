@@ -15,6 +15,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import ProductDetail from './pages/ProductDetail'
 import Cart from './pages/Cart'
 import PlaceOrder from './pages/PlaceOrder'
+import Order from './pages/Order'
 
 const App = () => {
 
@@ -67,6 +68,10 @@ const App = () => {
         
         <Route path ="/place_order" element={
           userData ? <PlaceOrder /> : <Navigate to="/login" state={{from : location.pathname}}/>
+        } />
+
+        <Route path ="/orders" element={
+          userData ? <Order /> : <Navigate to="/login" state={{from : location.pathname}}/>
         } />
       </Routes> 
 
